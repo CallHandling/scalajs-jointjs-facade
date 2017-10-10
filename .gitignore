@@ -1,0 +1,14 @@
+target/
+.cache
+node_modules
+web-app/js/app.dep.js
+web-app/js/app.js
+web-app/js/app.js.map
+web-app/package-lock.json
+.classpath
+.project
+.settings/
+/.idea/
+/../target
+/.idea_modules/
+project/target
