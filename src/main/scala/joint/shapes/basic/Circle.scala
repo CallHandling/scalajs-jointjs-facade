@@ -1,12 +1,10 @@
 package joint.shapes.basic
 
-import joint.dia.Options
+import joint.dia.GenericAttributes
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 
 @js.native
 @JSGlobal("joint.shapes.basic.Circle")
-class Circle(options: Options) extends Generic[Options, Circle] {
-  override def attributes: Options = js.native
-}
+class Circle(override val attributes: GenericAttributes) extends Generic(attributes)

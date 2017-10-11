@@ -1,12 +1,10 @@
 package joint.shapes.basic
 
-import joint.dia.Options
+import joint.dia.GenericAttributes
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 
 @js.native
 @JSGlobal("joint.shapes.basic.Path")
-class Path(options: Options) extends Generic[Options, Path] {
-  override def attributes: Options = js.native
-}
+class Path(override val attributes: GenericAttributes) extends Generic(attributes)

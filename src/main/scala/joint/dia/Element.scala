@@ -1,11 +1,11 @@
 package joint.dia
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSGlobal
 
 @js.native
-trait Element extends Cell[Options, Element] {
-  override def attributes: Options = js.native
-
+@JSGlobal("joint.dia.ElementView")
+class Element(attributes: CellAttributes) extends Cell(attributes) {
   def translate(x: Int, y: Int): js.native = js.native
 
   def getAttribute(name: String): String = js.native
@@ -16,8 +16,8 @@ trait BoundProps extends js.Object {
   var inbound: js.UndefOr[Boolean] = js.undefined
 }
 
-trait Options extends js.Object {
-  var position: js.UndefOr[Position] = js.undefined
+trait GenericAttributes extends CellAttributes {
+  var position: js.UndefOr[Point] = js.undefined
   var size: js.UndefOr[Size] = js.undefined
   var angel: js.UndefOr[Int] = js.undefined
   var id: js.UndefOr[String] = js.undefined
@@ -30,7 +30,13 @@ trait Size extends js.Object {
   var height: js.UndefOr[Int] = js.undefined
 }
 
-trait Position extends js.Object {
+trait Point extends js.Object {
   var x: js.UndefOr[Int] = js.undefined
   var y: js.UndefOr[Int] = js.undefined
+}
+
+trait LinkConnector extends js.Object {
+  val id: js.UndefOr[String] = js.undefined
+  var selector: js.UndefOr[String] = js.undefined
+  var port: js.UndefOr[String] = js.undefined
 }

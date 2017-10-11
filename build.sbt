@@ -17,7 +17,6 @@ lazy val root = (project in file("."))
   .settings(
     libraryDependencies ++= Seq(
       "org.scala-js" %%% "scalajs-dom" % "0.9.2",
-      "be.doeraene" %%% "scalajs-jquery" % "0.9.2",
-      "com.github.japgolly.scalajs-react" %%% "core" % "1.1.0"
+      "be.doeraene" %%% "scalajs-jquery" % "0.9.2"
     )
   ).enablePlugins(ScalaJSPlugin)
