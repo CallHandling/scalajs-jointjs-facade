@@ -13,20 +13,11 @@ class Element(attributes: CellAttributes) extends Cell(attributes) {
   def translate(tx: Int, ty: js.UndefOr[Int] = js.undefined,
                 options: js.UndefOr[TranslateOptions] = js.undefined): Element = js.native
 
-  //def position(options?: { parentRelative: boolean }): Point;
-  //def position(x: number, y: number, options?: { parentRelative?: boolean }): this;
+  def position(options: js.UndefOr[ParentRelative]): Point = js.native
 
-  /*def resize(width: number, height: number, options?: {
-    direction?:
-      'left'
-    | 'right'
-    | 'top'
-    | 'bottom'
-    | 'top-right'
-    | 'top-left'
-    | 'bottom-left'
-    | 'bottom-right'
-  }): this;*/
+  def position(x: Int, y: Int, options: js.UndefOr[ParentRelative] = js.undefined): Element = js.native
+
+  def resize(width: Int, height: Int, options: js.UndefOr[Direction] = js.undefined): Element = js.native
 
   def rotate(deg: Double, absolute: js.UndefOr[Boolean] = js.undefined,
              origin: js.UndefOr[Point] = js.undefined): Element = js.native
@@ -34,8 +25,6 @@ class Element(attributes: CellAttributes) extends Cell(attributes) {
   def embed(cell: Cell): Element = js.native
 
   def unembed(cell: Cell): Element = js.native
-
-  //def getEmbeddedCells(options: js.UndefOr[ExploreOptions]): js.Array[Cell] = js.native
 
   //def fitEmbeds(options?: { deep?: boolean, padding?: Padding }): this;
 
@@ -74,4 +63,10 @@ trait BoundProps extends js.Object {
 }
 
 
+trait Direction extends js.Object {
+  var direction: js.UndefOr[String] = js.undefined //'left'|'right'|'top'|'bottom'|'top-right'|'top-left'|'bottom-left'|'bottom-right'
+}
 
+trait ParentRelative extends js.Object {
+  var parentRelative: js.UndefOr[Boolean] = js.undefined
+}

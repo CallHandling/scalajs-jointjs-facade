@@ -102,3 +102,11 @@ trait FitToContentOptions extends js.Object {
   var maxWidth: js.UndefOr[Int] = js.undefined
   var maxHeight: js.UndefOr[Int] = js.undefined
 }
+
+trait Deep extends js.Object {
+  var deep: js.UndefOr[Boolean] = js.undefined
+}
+
+trait DisconnectLinks extends js.Object {
+  var disconnectLinks: js.UndefOr[Boolean] = js.undefined
+}

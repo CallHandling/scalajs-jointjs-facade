@@ -18,15 +18,15 @@ class Cell(val attributes: CellAttributes) extends js.Object {
 
   def toJSON(): js.Any = js.native
 
-  //def remove(options?: { disconnectLinks?: boolean }): this;
+  def remove(options: js.UndefOr[DisconnectLinks] = js.undefined): Cell = js.native
 
-  //def toFront(options?: { deep?: boolean }): this;
+  def toFront(options: js.UndefOr[Deep] = js.undefined): Cell = js.native
 
-  //def toBack(options?: { deep?: boolean }): this;
+  def toBack(options: js.UndefOr[Deep] = js.undefined): Cell = js.native
 
   def getAncestors(): js.Array[Cell] = js.native
 
-  //def isEmbeddedIn(element: Element, options?: { deep: boolean }): boolean;
+  def isEmbeddedIn(element: Element, options: js.UndefOr[Deep] = js.undefined): Boolean = js.native
 
   def prop(key: String): js.Any = js.native
 
@@ -40,13 +40,15 @@ class Cell(val attributes: CellAttributes) extends js.Object {
 
   def attr(key: String): js.Any = js.native
 
-  //def attr(`object`: SVGAttributes): this;
+  def attr(`object`: SVGAttributes): Cell = js.native
+
   def attr(key: String, value: js.Any): Cell = js.native
 
   @JSName("clone")
   def copy(): Cell = js.native
 
-  //def clone(opt: { deep?: boolean }): Cell | Cell[];
+  @JSName("clone")
+  def clone(opt: Deep): Cell | js.Array[Cell] = js.native
 
   def removeAttr(path: String | js.Array[String],
                  options: js.UndefOr[js.Any] = js.undefined): Cell = js.native
@@ -67,7 +69,7 @@ class Cell(val attributes: CellAttributes) extends js.Object {
 
   def embed(cell: Cell, options: js.UndefOr[js.Any] = js.undefined): Cell = js.native
 
-  def getEmbeddedCells(options: js.UndefOr[js.Any] = js.undefined): js.Array[Cell] = js.native
+  def getEmbeddedCells(options: js.UndefOr[ExploreOptions] = js.undefined): js.Array[Cell] = js.native
 
   def initialize(options: js.UndefOr[js.Any] = js.undefined): Unit = js.native
 
