@@ -1,18 +1,28 @@
-package joint.shapes
+package joint.shapes.logic
 
 import joint.dia
 import joint.dia.{SVGAttributes, TextAttrs}
+import joint.shapes.{GenericAttributes, ShapeAttrs, ShapeAttrsSetters, basic}
+import org.querki.jsext.{JSOptionBuilder, JSOptionSetter, OptMap, noOpts}
 
 import scala.scalajs.js
-import scala.scalajs.js.|
 
 
 trait LogicAttrs extends ShapeAttrs {
-  var `ref-dx`: js.UndefOr[String | Int] = js.undefined
-  var `ref-dy`: js.UndefOr[String | Int] = js.undefined
-  var magnet: js.UndefOr[Boolean] = js.undefined
-  var `class`: js.UndefOr[String] = js.undefined
-  var port: js.UndefOr[String] = js.undefined
+  val `class`: js.UndefOr[String] = js.undefined
+  val port: js.UndefOr[String] = js.undefined
+}
+
+object LogicAttrs extends LogicAttrsBuilder(noOpts)
+
+class LogicAttrsBuilder(val dict: OptMap) extends JSOptionBuilder[LogicAttrs, LogicAttrsBuilder](new LogicAttrsBuilder(_))
+  with LogicAttrsSetters[LogicAttrs, LogicAttrsBuilder]
+  with ShapeAttrsSetters[LogicAttrs, LogicAttrsBuilder]
+
+trait LogicAttrsSetters[T <: js.Object, B <: JSOptionBuilder[T, _]] extends JSOptionSetter[T, B] {
+  def `class`(k: String) = jsOpt("class", k)
+
+  def port(k: String) = jsOpt("port", k)
 }
 
 trait IOAttrs extends TextAttrs {

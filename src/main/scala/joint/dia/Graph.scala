@@ -6,7 +6,7 @@ import scala.scalajs.js.|
 
 @js.native
 @JSGlobal("joint.dia.Graph")
-class Graph(attributes: js.Any, options: js.UndefOr[js.Any] = js.undefined) extends js.Object {
+class Graph(attributes: js.UndefOr[js.Any] = js.undefined, options: js.UndefOr[js.Any] = js.undefined) extends js.Object {
   def addCell(cell: Cell): Graph = js.native
 
   def fromJSON(json: Dynamic): Graph = js.native

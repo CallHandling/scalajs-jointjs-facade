@@ -1,10 +1,11 @@
-package joint.shapes
+package joint.shapes.org
 
 import joint.dia
+import joint.shapes.{GenericAttributes, ShapeAttrs}
 
 import scala.scalajs.js
 
-trait MemberAttrs {
+trait MemberAttrs extends js.Object{
   var rect: js.UndefOr[ShapeAttrs] = js.undefined
   var image: js.UndefOr[ShapeAttrs] = js.undefined
 }

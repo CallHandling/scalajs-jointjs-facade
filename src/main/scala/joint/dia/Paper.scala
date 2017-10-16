@@ -1,5 +1,6 @@
 package joint.dia
 
+import org.querki.jsext.{JSOptionBuilder, OptMap, noOpts}
 import org.scalajs.dom
 import org.scalajs.dom.Event
 import org.scalajs.dom.raw.{HTMLElement, SVGDefsElement, SVGElement, SVGGElement}
@@ -10,21 +11,20 @@ import scala.scalajs.js.annotation.JSGlobal
 import scala.scalajs.js.|
 
 trait PaperOptions extends js.Object {
-  type VCFunction = js.Function6[CellView, SVGElement, CellView, SVGElement, String, LinkView, Boolean]
-  var el: js.UndefOr[String | JQuery | HTMLElement] = js.undefined
-  var width: js.UndefOr[Int] = js.undefined
-  var height: js.UndefOr[Int] = js.undefined
-  var gridSize: js.UndefOr[Int] = js.undefined
-  var model: js.UndefOr[Graph] = js.undefined
-  var markAvailable: js.UndefOr[Boolean] = js.undefined
-  var defaultLink: js.UndefOr[Link | js.Function2[CellView, SVGElement, Link]] = js.undefined
-  var linkPinning: js.UndefOr[Boolean] = js.undefined
-  var validateConnection: js.UndefOr[VCFunction] = js.undefined
-  var elementView: js.UndefOr[ElementView | js.Function1[Element, ElementView]] = js.undefined
-  var validateMagnet: js.UndefOr[js.Function2[CellView, SVGElement, Boolean]] = js.undefined
-  var origin: js.UndefOr[Point] = js.undefined
-  var perpendicularLinks: js.UndefOr[Boolean] = js.undefined
-  var linkView: js.UndefOr[js.Function1[Link, LinkView] | LinkView] = js.undefined
+  val el: js.UndefOr[String | JQuery | HTMLElement] = js.undefined
+  val width: js.UndefOr[Int] = js.undefined
+  val height: js.UndefOr[Int] = js.undefined
+  val gridSize: js.UndefOr[Int] = js.undefined
+  val model: js.UndefOr[Graph] = js.undefined
+  val markAvailable: js.UndefOr[Boolean] = js.undefined
+  val defaultLink: js.UndefOr[Link | js.Function2[CellView, SVGElement, Link]] = js.undefined
+  val linkPinning: js.UndefOr[Boolean] = js.undefined
+  val validateConnection: js.UndefOr[PaperOptions.VCFunction] = js.undefined
+  val elementView: js.UndefOr[ElementView | js.Function1[Element, ElementView]] = js.undefined
+  val validateMagnet: js.UndefOr[js.Function2[CellView, SVGElement, Boolean]] = js.undefined
+  val origin: js.UndefOr[Point] = js.undefined
+  val perpendicularLinks: js.UndefOr[Boolean] = js.undefined
+  val linkView: js.UndefOr[js.Function1[Link, LinkView] | LinkView] = js.undefined
   /*defaultRouter ?:
     ((vertices: Point[], args: Object, linkView: LinkView) => Point[])
   | {
@@ -39,24 +39,99 @@ trait PaperOptions extends js.Object {
       radius ?: number
     }
   };*/
-  var interactive: js.UndefOr[js.Function2[CellView, String, Boolean] | Boolean] = js.undefined
+  val interactive: js.UndefOr[js.Function2[CellView, String, Boolean] | Boolean] = js.undefined
   /*interactive?:
     ((cellView: CellView, event: string) => boolean)
   | boolean
     | { vertexAdd?: boolean, vertexMove?: boolean, vertexRemove?: boolean, arrowheadMove?: boolean };*/
-  var linkConnectionPoint: js.UndefOr[js.Function4[LinkView, ElementView, SVGElement, Point, Point]] = js.undefined
-  var snapLinks: js.UndefOr[Boolean /*| { radius: number }*/ ] = js.undefined
-  var async: js.UndefOr[Boolean /*| { batchZise: number }*/ ] = js.undefined
-  var embeddingMode: js.UndefOr[Boolean] = js.undefined
-  var validateEmbedding: js.UndefOr[js.Function2[ElementView, ElementView, Boolean]] = js.undefined
-  var restrictTranslate: js.UndefOr[js.Function1[ElementView, BBox] | Boolean] = js.undefined
-  var guard: js.UndefOr[js.Function2[Event, CellView, Boolean]] = js.undefined
-  var multiLinks: js.UndefOr[Boolean] = js.undefined
-  var cellViewNamespace: js.UndefOr[js.Object] = js.undefined
-  var clickThreshold: js.UndefOr[Int] = js.undefined
-  var highlighting: js.UndefOr[js.Any] = js.undefined
+  val linkConnectionPoint: js.UndefOr[js.Function4[LinkView, ElementView, SVGElement, Point, Point]] = js.undefined
+  val snapLinks: js.UndefOr[Boolean /*| { radius: number }*/ ] = js.undefined
+  val async: js.UndefOr[Boolean /*| { batchZise: number }*/ ] = js.undefined
+  val embeddingMode: js.UndefOr[Boolean] = js.undefined
+  val validateEmbedding: js.UndefOr[js.Function2[ElementView, ElementView, Boolean]] = js.undefined
+  val restrictTranslate: js.UndefOr[js.Function1[ElementView, BBox] | Boolean] = js.undefined
+  val guard: js.UndefOr[js.Function2[Event, CellView, Boolean]] = js.undefined
+  val multiLinks: js.UndefOr[Boolean] = js.undefined
+  val cellViewNamespace: js.UndefOr[js.Object] = js.undefined
+  val clickThreshold: js.UndefOr[Int] = js.undefined
+  val highlighting: js.UndefOr[js.Any] = js.undefined
 }
 
+object PaperOptions extends PaperOptionsBuilder(noOpts) {
+  type VCFunction = js.Function6[CellView, SVGElement, CellView, SVGElement, String, LinkView, Boolean]
+}
+
+class PaperOptionsBuilder(val dict: OptMap) extends JSOptionBuilder[PaperOptions, PaperOptionsBuilder](new PaperOptionsBuilder(_)) {
+  def el(v: String | JQuery | HTMLElement): PaperOptionsBuilder = jsOpt("el", v)
+
+  def width(v: Int): PaperOptionsBuilder = jsOpt("width", v)
+
+  def height(v: Int): PaperOptionsBuilder = jsOpt("height", v)
+
+  def gridSize(v: Int): PaperOptionsBuilder = jsOpt("gridSize", v)
+
+  def model(v: Graph): PaperOptionsBuilder = jsOpt("model", v)
+
+  def markAvailable(v: Boolean): PaperOptionsBuilder = jsOpt("markAvailable", v)
+
+  def defaultLink(v: Link | js.Function2[CellView, SVGElement, Link]): PaperOptionsBuilder = jsOpt("defaultLink", v)
+
+  def linkPinning(v: Boolean): PaperOptionsBuilder = jsOpt("linkPinning", v)
+
+  def validateConnection(v: PaperOptions.VCFunction): PaperOptionsBuilder = jsOpt("validateConnection", v)
+
+  def elementView(v: ElementView | js.Function1[Element, ElementView]): PaperOptionsBuilder = jsOpt("elementView", v)
+
+  def validateMagnet(v: js.Function2[CellView, SVGElement, Boolean]): PaperOptionsBuilder = jsOpt("validateMagnet", v)
+
+  def origin(v: Point): PaperOptionsBuilder = jsOpt("origin", v)
+
+  def perpendicularLinks(v: Boolean): PaperOptionsBuilder = jsOpt("perpendicularLinks", v)
+
+  def linkView(v: js.Function1[Link, LinkView] | LinkView) = jsOpt("linkView", v)
+
+  /*defaultRouter ?:
+    ((vertices: Point[], args: Object, linkView: LinkView) => Point[])
+  | {
+    name: string
+    , args ?: ManhattanRouterArgs
+  };
+  defaultConnector ?:
+    ((sourcePoint: Point, targetPoint: Point, vertices: Point[], args: Object, linkView: LinkView) => string)
+  | {
+    name: string
+    , args ?: {
+      radius ?: number
+    }
+  };*/
+  def interactive(v: js.Function2[CellView, String, Boolean] | Boolean): PaperOptionsBuilder = jsOpt("interactive", v)
+
+  /*interactive?:
+    ((cellView: CellView, event: string) => boolean)
+  | boolean
+    | { vertexAdd?: boolean, vertexMove?: boolean, vertexRemove?: boolean, arrowheadMove?: boolean };*/
+  def linkConnectionPoint(v: js.Function4[LinkView, ElementView, SVGElement, Point, Point]): PaperOptionsBuilder = jsOpt("linkConnectionPoint", v)
+
+  def snapLinks(v: Boolean /*| { radius: number }*/): PaperOptionsBuilder = jsOpt("snapLinks", v)
+
+  def async(v: Boolean /*| { batchZise: number }*/): PaperOptionsBuilder = jsOpt("async", v)
+
+  def embeddingMode(v: Boolean) = jsOpt("embeddingMode", v): PaperOptionsBuilder
+
+  def validateEmbedding(v: js.Function2[ElementView, ElementView, Boolean]): PaperOptionsBuilder = jsOpt("validateEmbedding", v)
+
+  def restrictTranslate(v: js.Function1[ElementView, BBox] | Boolean): PaperOptionsBuilder = jsOpt("restrictTranslate", v)
+
+  def guard(v: js.Function2[Event, CellView, Boolean]) = jsOpt("guard", v): PaperOptionsBuilder
+
+  def multiLinks(v: Boolean) = jsOpt("multiLinks", v): PaperOptionsBuilder
+
+  def cellViewNamespace(v: js.Object) = jsOpt("cellViewNamespace", v): PaperOptionsBuilder
+
+  def clickThreshold(v: Int) = jsOpt("clickThreshold", v): PaperOptionsBuilder
+
+  def highlighting(v: js.Any) = jsOpt("highlighting", v): PaperOptionsBuilder
+}
 
 @js.native
 @JSGlobal("joint.dia.Paper")

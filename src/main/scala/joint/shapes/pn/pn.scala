@@ -1,7 +1,9 @@
-package joint.shapes
+package joint.shapes.pn
 
 import joint.dia.SVGAttributes
 import joint.dia
+import joint.shapes.GenericAttributes
+import joint.shapes.basic
 
 class Place(override val attributes: GenericAttributes[SVGAttributes]) extends basic.Generic(attributes)
 
