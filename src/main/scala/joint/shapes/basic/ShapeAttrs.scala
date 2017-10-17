@@ -1,9 +1,7 @@
-package joint.shapes
+package joint.shapes.basic
 
 import joint.dia.CSSSelector
-import _root_.org.querki.jsext.JSOptionSetter
-import _root_.org.querki.jsext.JSOptionBuilder
-import _root_.org.querki.jsext._
+import org.querki.jsext.{JSOptionBuilder, JSOptionSetter, _}
 
 import scala.scalajs.js
 import scala.scalajs.js.|
@@ -27,8 +25,8 @@ trait ShapeAttrs extends CSSSelector {
   val transform: js.UndefOr[String] = js.undefined
   val points: js.UndefOr[String] = js.undefined
   val `stroke-width`: js.UndefOr[String | Int] = js.undefined
-  val `ref-x`: js.UndefOr[String | Int] = js.undefined
-  val `ref-y`: js.UndefOr[String | Int] = js.undefined
+  val `ref-x`: js.UndefOr[String | Double] = js.undefined
+  val `ref-y`: js.UndefOr[String | Double] = js.undefined
   val ref: js.UndefOr[String] = js.undefined
 }
 
@@ -43,43 +41,71 @@ trait ShapeAttrsSetters[T <: js.Object, B <: JSOptionBuilder[T, _]]
 
   def cursor(v: String): B = jsOpt("cursor", v)
 
-  def `ref-dx`(v: Int | Double): B = jsOpt("ref-dx", v)
+  def `ref-dx`(v: Int): B = jsOpt("ref-dx", v)
 
-  def `ref-dy`(v: Int | Double): B = jsOpt("ref-dy", v)
+  def `ref-dx`(v: Double): B = jsOpt("ref-dx", v)
+
+  def `ref-dy`(v: Int): B = jsOpt("ref-dy", v)
+
+  def `ref-dy`(v: Double): B = jsOpt("ref-dy", v)
 
   def d(v: String): B = jsOpt("d", v)
 
   def text(v: String): B = jsOpt("text", v)
 
-  def set(key: String, v: ShapeAttrs): B = jsOpt(key, v)
+  /**
+    * set will set SVG attributes to the given selector/tag
+    *
+    * @param selector css/svg tag selector
+    * @param v        ShapeAttrs SVG attributes
+    * @return B builder
+    */
+  def set(selector: String, v: ShapeAttrs): B = jsOpt(selector, v)
 
   def fill(v: String): B = jsOpt("fill", v)
 
   def stroke(v: String): B = jsOpt("stroke", v)
 
-  def r(v: String | Int): B = jsOpt("r", v)
+  def r(v: Int): B = jsOpt("r", v)
 
-  def rx(v: String | Int): B = jsOpt("rx", v)
+  def r(v: String): B = jsOpt("r", v)
 
-  def ry(v: String | Int): B = jsOpt("ry", v)
+  def rx(v: Int): B = jsOpt("rx", v)
 
-  def cx(v: String | Int): B = jsOpt("cx", v)
+  def rx(v: String): B = jsOpt("rx", v)
 
-  def cy(v: String | Int): B = jsOpt("cy", v)
+  def ry(v: String): B = jsOpt("ry", v)
 
-  def height(v: String | Int): B = jsOpt("height", v)
+  def ry(v: Int): B = jsOpt("ry", v)
 
-  def width(v: String | Int): B = jsOpt("width", v)
+  def cx(v: String): B = jsOpt("cx", v)
+
+  def cx(v: Int): B = jsOpt("cx", v)
+
+
+  def cy(v: String): B = jsOpt("cy", v)
+
+  def cy(v: Int): B = jsOpt("cy", v)
+
+  def height(v: Int): B = jsOpt("height", v)
+
+  def width(v: Int): B = jsOpt("width", v)
 
   def transform(v: String): B = jsOpt("transform", v)
 
   def points(v: String): B = jsOpt("points", v)
 
-  def `stroke-width`(v: String | Int): B = jsOpt("stroke-width", v)
+  def `stroke-width`(v: String): B = jsOpt("stroke-width", v)
 
-  def `ref-x`(v: String | Int): B = jsOpt("ref-x", v)
+  def `stroke-width`(v: Int): B = jsOpt("stroke-width", v)
 
-  def `ref-y`(v: String | Int): B = jsOpt("ref-y", v)
+  def `ref-x`(v: String): B = jsOpt("ref-x", v)
+
+  def `ref-x`(v: Double): B = jsOpt("ref-x", v)
+
+  def `ref-y`(v: Double): B = jsOpt("ref-y", v)
+
+  def `ref-y`(v: String): B = jsOpt("ref-y", v)
 
   def ref(v: String): B = jsOpt("ref", v)
 

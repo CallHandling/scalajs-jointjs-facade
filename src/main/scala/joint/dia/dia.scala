@@ -184,6 +184,10 @@ trait TextAttrs extends SVGAttributes {
   val text: js.UndefOr[TextOptions] = js.undefined
 }
 
+trait TextAttrsSetters[T <: js.Object, B <: JSOptionBuilder[T, _]] extends JSOptionSetter[T, B] {
+  def text(v: TextOptions): B = jsOpt("test", v)
+}
+
 object TextAttrs {
   def apply(text: js.UndefOr[TextOptions] = js.undefined,
             selector: js.UndefOr[String | CSSSelector] = js.undefined): TextAttrs = {

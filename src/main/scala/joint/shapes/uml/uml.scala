@@ -2,7 +2,8 @@ package joint.shapes.uml
 
 import joint.dia
 import joint.dia.SVGAttributes
-import joint.shapes.{GenericAttributes, ShapeAttrs, basic}
+import joint.shapes.basic.ShapeAttrs
+import joint.shapes.{GenericAttributes, basic}
 
 import scala.scalajs.js
 

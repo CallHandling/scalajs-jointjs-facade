@@ -1,9 +1,6 @@
 package joint.shapes.devs
 
-import _root_.org.querki.jsext.{JSOptionBuilder, _}
-import joint.dia._
-import joint.shapes.basic.Generic
-import joint.shapes.{GenericAttributes, GenericAttributesSetters}
+import joint.shapes.basic._
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
@@ -31,26 +28,4 @@ class Model(override val attributes: ModelAttributes) extends Generic(attributes
 
 object Model {
   def apply(attributes: ModelAttributes): Model = js.Dynamic.newInstance(js.Dynamic.global.joint.shapes.devs.Model)(attributes).asInstanceOf[Model]
-}
-
-trait ModelAttributes extends GenericAttributes[SVGAttributes] {
-  val inPorts: js.UndefOr[js.Array[String]] = js.undefined
-  val outPorts: js.UndefOr[js.Array[String]] = js.undefined
-  val ports: js.UndefOr[PortOptions] = js.undefined
-}
-
-object ModelAttributes extends ModelAttributesBuilder(noOpts)
-
-
-class ModelAttributesBuilder(val dict: OptMap) extends JSOptionBuilder[ModelAttributes, ModelAttributesBuilder](new ModelAttributesBuilder(_))
-  with ModelAttributesSetters[ModelAttributes, ModelAttributesBuilder]
-
-trait ModelAttributesSetters[T <: js.Object, B <: JSOptionBuilder[T, _]]
-  extends JSOptionSetter[T, B]
-    with GenericAttributesSetters[SVGAttributes, T, B] {
-  def inPorts(v: js.Array[String]): B = jsOpt("inPorts", v)
-
-  def outPorts(v: js.Array[String]): B = jsOpt("outPorts", v)
-
-  def ports(v: PortOptions): B = jsOpt("ports", v)
 }

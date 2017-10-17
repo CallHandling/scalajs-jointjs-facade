@@ -1,7 +1,9 @@
 package joint.shapes.basic
 
 import joint.dia
-import joint.shapes.{GenericAttributes, ShapeAttrs}
+import joint.dia.TextAttrsSetters
+import joint.shapes.GenericAttributes
+import org.querki.jsext.{JSOptionBuilder, OptMap, noOpts}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
@@ -11,5 +13,14 @@ import scala.scalajs.js.annotation.JSGlobal
 class Ellipse(override val attributes: GenericAttributes[EllipseAttrs]) extends Generic(attributes)
 
 trait EllipseAttrs extends dia.TextAttrs {
-  var ellipse: js.UndefOr[ShapeAttrs] = js.undefined
+  val ellipse: js.UndefOr[ShapeAttrs] = js.undefined
+}
+
+object EllipseAttrs extends EllipseAttrsBuilder(noOpts)
+
+class EllipseAttrsBuilder(val dict: OptMap)
+  extends JSOptionBuilder[EllipseAttrs, EllipseAttrsBuilder](new EllipseAttrsBuilder(_))
+    with TextAttrsSetters[EllipseAttrs, EllipseAttrsBuilder] {
+
+  def ellipse(v: ShapeAttrs): EllipseAttrsBuilder = jsOpt("ellipse", v)
 }

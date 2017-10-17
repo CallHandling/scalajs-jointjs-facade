@@ -1,5 +1,7 @@
 package joint.dia
 
+import joint.shapes.basic.ShapeAttrs
+import org.querki.jsext.{JSOptionBuilder, JSOptionSetter, OptMap, noOpts}
 import org.scalajs.dom.raw.SVGElement
 
 import scala.scalajs.js
@@ -38,7 +40,6 @@ class LinkView extends CellViewGeneric[Link, LinkView] {
 
   def renderVertexMarkers(): ElementView = js.native
 
-  //def startArrowheadMove(end: 'source' | 'target', options?: any): Unit
 
   def startListening(): Unit = js.native
 
@@ -57,11 +58,33 @@ class LinkView extends CellViewGeneric[Link, LinkView] {
 }
 
 trait LinkAttributes extends CellAttributes {
-  var source: js.UndefOr[Point | LinkConnector] = js.undefined //| { id: string, selector?: string, port?: string };
-  var target: js.UndefOr[Point | LinkConnector] = js.undefined //| { id: string, selector?: string, port?: string };
-  var labels: js.UndefOr[js.Array[Label]] = js.undefined
-  var vertices: js.UndefOr[js.Array[Point]] = js.undefined
-  var smooth: js.UndefOr[Boolean] = js.undefined
-  var attrs: js.UndefOr[TextAttrs] = js.undefined
-  var z: js.UndefOr[Int] = js.undefined
+  val source: js.UndefOr[Point | LinkConnector] = js.undefined
+  val target: js.UndefOr[Point | LinkConnector] = js.undefined
+  val labels: js.UndefOr[js.Array[Label]] = js.undefined
+  val vertices: js.UndefOr[js.Array[Point]] = js.undefined
+  val smooth: js.UndefOr[Boolean] = js.undefined
+  val attrs: js.UndefOr[js.Dictionary[ShapeAttrs]] = js.undefined
+  val z: js.UndefOr[Int] = js.undefined
+}
+
+object LinkAttributes extends LinkAttributesBuilder(noOpts)
+
+class LinkAttributesBuilder(val dict: OptMap)
+  extends JSOptionBuilder[LinkAttributes, LinkAttributesBuilder](new LinkAttributesBuilder(_))
+    with LinkAttributesSetters[LinkAttributes, LinkAttributesBuilder]
+
+trait LinkAttributesSetters[T <: js.Object, B <: JSOptionBuilder[T, _]] extends JSOptionSetter[T, B] {
+  def source(v: Point | LinkConnector): B = jsOpt("source", v)
+
+  def target(v: Point | LinkConnector): B = jsOpt("target", v)
+
+  def labels(v: js.Array[Label]): B = jsOpt("labels", v)
+
+  def vertices(v: js.Array[Point]): B = jsOpt("vertices", v)
+
+  def smooth(v: Boolean): B = jsOpt("smooth", v)
+
+  def attrs(v: js.Dictionary[ShapeAttrs]): B = jsOpt("attrs", v)
+
+  def z(v: Int): B = jsOpt("z", v)
 }

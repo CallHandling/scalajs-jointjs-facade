@@ -1,7 +1,9 @@
 package joint.shapes.basic
 
 import joint.dia
-import joint.shapes.{GenericAttributes, ShapeAttrs}
+import joint.dia.TextAttrsSetters
+import joint.shapes.GenericAttributes
+import org.querki.jsext.{JSOptionBuilder, OptMap, noOpts}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
@@ -11,5 +13,14 @@ import scala.scalajs.js.annotation.JSGlobal
 class Rect(override val attributes: GenericAttributes[RectAttrs]) extends Generic(attributes)
 
 trait RectAttrs extends dia.TextAttrs {
-  var rect: js.UndefOr[ShapeAttrs] = js.undefined
+  val rect: js.UndefOr[ShapeAttrs] = js.undefined
+}
+
+object RectAttrs extends RectAttrsBuilder(noOpts)
+
+class RectAttrsBuilder(val dict: OptMap)
+  extends JSOptionBuilder[RectAttrs, RectAttrsBuilder](new RectAttrsBuilder(_))
+    with TextAttrsSetters[RectAttrs, RectAttrsBuilder] {
+
+  def ellipse(v: ShapeAttrs): RectAttrsBuilder = jsOpt("ellipse", v)
 }

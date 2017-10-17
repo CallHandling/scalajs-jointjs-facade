@@ -2,7 +2,8 @@ package joint.shapes.logic
 
 import joint.dia
 import joint.dia.{SVGAttributes, TextAttrs}
-import joint.shapes.{GenericAttributes, ShapeAttrs, ShapeAttrsSetters, basic}
+import joint.shapes.basic.{ShapeAttrs, ShapeAttrsSetters}
+import joint.shapes.{GenericAttributes, basic}
 import org.querki.jsext.{JSOptionBuilder, JSOptionSetter, OptMap, noOpts}
 
 import scala.scalajs.js

@@ -1,7 +1,9 @@
 package joint.shapes.basic
 
 import joint.dia
-import joint.shapes.{GenericAttributes, ShapeAttrs}
+import joint.dia.TextAttrsSetters
+import joint.shapes.GenericAttributes
+import org.querki.jsext.{JSOptionBuilder, OptMap, noOpts}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
@@ -11,5 +13,14 @@ import scala.scalajs.js.annotation.JSGlobal
 class Circle(override val attributes: GenericAttributes[CircleAttrs]) extends Generic(attributes)
 
 trait CircleAttrs extends dia.TextAttrs {
-  var circle: js.UndefOr[ShapeAttrs] = js.undefined
+  val circle: js.UndefOr[ShapeAttrs] = js.undefined
+}
+
+object CircleAttrs extends CircleAttrsBuilder(noOpts)
+
+class CircleAttrsBuilder(val dict: OptMap)
+  extends JSOptionBuilder[CircleAttrs, CircleAttrsBuilder](new CircleAttrsBuilder(_))
+    with TextAttrsSetters[CircleAttrs, CircleAttrsBuilder] {
+
+  def circle(v: ShapeAttrs): CircleAttrsBuilder = jsOpt("circle", v)
 }

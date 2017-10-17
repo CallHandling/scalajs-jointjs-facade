@@ -1,7 +1,7 @@
 package joint.dia
 
 
-import joint.shapes.ShapeAttrs
+import joint.shapes.basic.ShapeAttrs
 
 import scala.scalajs.js
 

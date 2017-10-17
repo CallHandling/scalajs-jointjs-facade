@@ -2,7 +2,8 @@ package joint.shapes.erd
 
 import joint.dia
 import joint.dia.TextAttrs
-import joint.shapes.{GenericAttributes, ShapeAttrs}
+import joint.shapes.GenericAttributes
+import joint.shapes.basic.ShapeAttrs
 
 import scala.scalajs.js
 

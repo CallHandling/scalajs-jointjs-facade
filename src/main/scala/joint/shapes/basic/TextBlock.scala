@@ -1,7 +1,9 @@
 package joint.shapes.basic
 
 import joint.dia
-import joint.shapes.{GenericAttributes, ShapeAttrs}
+import joint.dia.TextAttrsSetters
+import joint.shapes.GenericAttributes
+import org.querki.jsext.{JSOptionBuilder, OptMap, noOpts}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
@@ -12,5 +14,14 @@ import scala.scalajs.js.annotation.JSGlobal
 class TextBlock(override val attributes: GenericAttributes[dia.TextAttrs]) extends Generic(attributes)
 
 trait TextBlockAttrs extends dia.TextAttrs {
-  var rect: js.UndefOr[ShapeAttrs] = js.undefined
+  val rect: js.UndefOr[ShapeAttrs] = js.undefined
+}
+
+object TextBlockAttrs extends TextBlockAttrsBuilder(noOpts)
+
+class TextBlockAttrsBuilder(val dict: OptMap)
+  extends JSOptionBuilder[TextBlockAttrs, TextBlockAttrsBuilder](new TextBlockAttrsBuilder(_))
+    with TextAttrsSetters[TextBlockAttrs, TextBlockAttrsBuilder] {
+
+  def ellipse(v: ShapeAttrs): TextBlockAttrsBuilder = jsOpt("ellipse", v)
 }
