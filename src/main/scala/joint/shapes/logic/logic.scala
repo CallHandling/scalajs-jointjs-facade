@@ -18,9 +18,9 @@ object LogicAttrs extends LogicAttrsBuilder(noOpts)
 
 class LogicAttrsBuilder(val dict: OptMap) extends JSOptionBuilder[LogicAttrs, LogicAttrsBuilder](new LogicAttrsBuilder(_))
   with LogicAttrsSetters[LogicAttrs, LogicAttrsBuilder]
-  with ShapeAttrsSetters[LogicAttrs, LogicAttrsBuilder]
 
-trait LogicAttrsSetters[T <: js.Object, B <: JSOptionBuilder[T, _]] extends JSOptionSetter[T, B] {
+trait LogicAttrsSetters[T <: js.Object, B <: JSOptionBuilder[T, _]]
+  extends JSOptionSetter[T, B] with ShapeAttrsSetters[T, B] {
   def `class`(k: String) = jsOpt("class", k)
 
   def port(k: String) = jsOpt("port", k)

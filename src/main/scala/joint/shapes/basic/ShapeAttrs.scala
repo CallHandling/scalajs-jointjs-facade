@@ -30,7 +30,9 @@ trait ShapeAttrs extends CSSSelector {
   val ref: js.UndefOr[String] = js.undefined
 }
 
-object ShapeAttrs extends ShapeAttrsBuilder(noOpts)
+object ShapeAttrs extends ShapeAttrsBuilder(noOpts) {
+  lazy val builder = new ShapeAttrsBuilder(dict)
+}
 
 class ShapeAttrsBuilder(val dict: OptMap)
   extends JSOptionBuilder[ShapeAttrs, ShapeAttrsBuilder](new ShapeAttrsBuilder(_))
