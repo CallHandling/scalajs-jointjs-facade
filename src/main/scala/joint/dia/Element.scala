@@ -5,7 +5,7 @@ import scala.scalajs.js.annotation.JSGlobal
 
 @js.native
 @JSGlobal("joint.dia.ElementView")
-class Element(attributes: CellAttributes) extends Cell(attributes) {
+class Element(override val attributes: CellAttributes) extends Cell(attributes) {
   def translate(x: Int, y: Int): js.native = js.native
 
   def getAttribute(name: String): String = js.native

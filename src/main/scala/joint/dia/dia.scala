@@ -36,15 +36,16 @@ object Point {
 }
 
 trait LinkConnector extends js.Object {
-  val id: js.UndefOr[String] = js.undefined
+  val id: String
   val selector: js.UndefOr[String] = js.undefined
   val port: js.UndefOr[String] = js.undefined
 }
 
 object LinkConnector {
-  def apply(selector: js.UndefOr[String],
+  def apply(id0: String, selector: js.UndefOr[String],
             port: js.UndefOr[String] = js.undefined): LinkConnector = {
     val result = js.Dynamic.literal()
+    result.id = id0
     selector.foreach(result.selector = _)
     port.foreach(result.port = _)
     result.asInstanceOf[LinkConnector]

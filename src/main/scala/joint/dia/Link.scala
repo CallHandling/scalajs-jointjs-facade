@@ -5,7 +5,7 @@ import scala.scalajs.js.annotation.JSGlobal
 
 @js.native
 @JSGlobal("joint.dia.Link")
-class Link(attributes: LinkAttributes) extends Cell(attributes) {
+class Link(override val attributes: LinkAttributes) extends Cell(attributes) {
   val port: String = js.native
 
   def markup: String = js.native

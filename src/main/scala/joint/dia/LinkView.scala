@@ -7,6 +7,7 @@ import org.scalajs.dom.raw.SVGElement
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 import scala.scalajs.js.|
+import scalatags.JsDom
 
 @js.native
 @JSGlobal("joint.dia.LinkView")
@@ -65,6 +66,12 @@ trait LinkAttributes extends CellAttributes {
   val smooth: js.UndefOr[Boolean] = js.undefined
   val attrs: js.UndefOr[js.Dictionary[ShapeAttrs]] = js.undefined
   val z: js.UndefOr[Int] = js.undefined
+  val markup: js.UndefOr[String] = js.undefined
+  val labelMarkup: js.UndefOr[String] = js.undefined
+  val toolMarkup: js.UndefOr[String] = js.undefined
+  val vertexMarkup: js.UndefOr[String] = js.undefined
+  val arrowheadMarkup: js.UndefOr[String] = js.undefined
+
 }
 
 object LinkAttributes extends LinkAttributesBuilder(noOpts)
@@ -74,6 +81,17 @@ class LinkAttributesBuilder(val dict: OptMap)
     with LinkAttributesSetters[LinkAttributes, LinkAttributesBuilder]
 
 trait LinkAttributesSetters[T <: js.Object, B <: JSOptionBuilder[T, _]] extends JSOptionSetter[T, B] {
+
+  def markup(v1: List[JsDom.TypedTag[SVGElement]]): B = jsOpt("markup", v1.map(_.toString).mkString)
+
+  def labelMarkup(v: JsDom.TypedTag[SVGElement]): B = jsOpt("labelMarkup", v.toString())
+
+  def toolMarkup(v: JsDom.TypedTag[SVGElement]): B = jsOpt("toolMarkup", v.toString())
+
+  def vertexMarkup(v: JsDom.TypedTag[SVGElement]): B = jsOpt("vertexMarkup", v.toString())
+
+  def arrowheadMarkup(v: JsDom.TypedTag[SVGElement]): B = jsOpt("arrowheadMarkup", v.toString())
+
   def source(v: Point | LinkConnector): B = jsOpt("source", v)
 
   def target(v: Point | LinkConnector): B = jsOpt("target", v)
