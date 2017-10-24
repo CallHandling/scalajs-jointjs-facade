@@ -2,7 +2,7 @@ package joint.shapes.basic
 
 import joint.dia
 import joint.dia.TextAttrsSetters
-import joint.shapes.GenericAttributes
+import joint.shapes.{GenericAttributes, GenericAttributesBuilder}
 import org.querki.jsext.{JSOptionBuilder, OptMap, noOpts}
 
 import scala.scalajs.js
@@ -22,5 +22,7 @@ class PolygonAttrsBuilder(val dict: OptMap)
   extends JSOptionBuilder[PolygonAttrs, PolygonAttrsBuilder](new PolygonAttrsBuilder(_))
     with TextAttrsSetters[PolygonAttrs, PolygonAttrsBuilder] {
 
-  def ellipse(v: ShapeAttrs): PolygonAttrsBuilder = jsOpt("ellipse", v)
+  def polygon(v: ShapeAttrs): PolygonAttrsBuilder = jsOpt("polygon", v)
 }
+
+object GenericPolygonAttrs extends GenericAttributesBuilder[PolygonAttrs](noOpts)

@@ -15,6 +15,7 @@ trait PaperOptions extends js.Object {
   val width: js.UndefOr[Int] = js.undefined
   val height: js.UndefOr[Int] = js.undefined
   val gridSize: js.UndefOr[Int] = js.undefined
+  val drawGrid: js.UndefOr[Boolean] = js.undefined
   val model: js.UndefOr[Graph] = js.undefined
   val markAvailable: js.UndefOr[Boolean] = js.undefined
   val defaultLink: js.UndefOr[Link | js.Function2[CellView, SVGElement, Link]] = js.undefined
@@ -67,6 +68,8 @@ class PaperOptionsBuilder(val dict: OptMap) extends JSOptionBuilder[PaperOptions
   def width(v: Int): PaperOptionsBuilder = jsOpt("width", v)
 
   def height(v: Int): PaperOptionsBuilder = jsOpt("height", v)
+
+  def drawGrid(v: Boolean): PaperOptionsBuilder = jsOpt("drawGrid", v)
 
   def gridSize(v: Int): PaperOptionsBuilder = jsOpt("gridSize", v)
 

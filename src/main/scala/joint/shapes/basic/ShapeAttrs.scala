@@ -97,6 +97,8 @@ trait ShapeAttrsSetters[T <: js.Object, B <: JSOptionBuilder[T, _]]
 
   def points(v: String): B = jsOpt("points", v)
 
+  def `font-size`(v: Int | String): B = jsOpt("font-size", v)
+
   def `stroke-width`(v: String): B = jsOpt("stroke-width", v)
 
   def `stroke-width`(v: Int): B = jsOpt("stroke-width", v)

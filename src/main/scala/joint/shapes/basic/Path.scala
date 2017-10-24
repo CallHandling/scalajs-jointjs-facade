@@ -2,7 +2,7 @@ package joint.shapes.basic
 
 import joint.dia
 import joint.dia.TextAttrsSetters
-import joint.shapes.GenericAttributes
+import joint.shapes.{GenericAttributes, GenericAttributesBuilder}
 import org.querki.jsext.{JSOptionBuilder, OptMap, noOpts}
 
 import scala.scalajs.js
@@ -22,5 +22,7 @@ class PathAttrsBuilder(val dict: OptMap)
   extends JSOptionBuilder[PathAttrs, PathAttrsBuilder](new PathAttrsBuilder(_))
     with TextAttrsSetters[PathAttrs, PathAttrsBuilder] {
 
-  def ellipse(v: ShapeAttrs): PathAttrsBuilder = jsOpt("ellipse", v)
+  def path(v: ShapeAttrs): PathAttrsBuilder = jsOpt("path", v)
 }
+
+object GenericPathAttrs extends GenericAttributesBuilder[PathAttrs](noOpts)

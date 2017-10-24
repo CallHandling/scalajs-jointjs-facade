@@ -23,5 +23,5 @@ class TextBlockAttrsBuilder(val dict: OptMap)
   extends JSOptionBuilder[TextBlockAttrs, TextBlockAttrsBuilder](new TextBlockAttrsBuilder(_))
     with TextAttrsSetters[TextBlockAttrs, TextBlockAttrsBuilder] {
 
-  def ellipse(v: ShapeAttrs): TextBlockAttrsBuilder = jsOpt("ellipse", v)
+  def rect(v: ShapeAttrs): TextBlockAttrsBuilder = jsOpt("rect", v)
 }

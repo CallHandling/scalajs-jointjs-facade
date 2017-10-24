@@ -2,7 +2,7 @@ package joint.shapes.basic
 
 import joint.dia
 import joint.dia.TextAttrsSetters
-import joint.shapes.GenericAttributes
+import joint.shapes.{GenericAttributes, GenericAttributesBuilder}
 import org.querki.jsext.{JSOptionBuilder, OptMap, noOpts}
 
 import scala.scalajs.js
@@ -22,5 +22,7 @@ class RhombusAttrsBuilder(val dict: OptMap)
   extends JSOptionBuilder[RhombusAttrs, RhombusAttrsBuilder](new RhombusAttrsBuilder(_))
     with TextAttrsSetters[RhombusAttrs, RhombusAttrsBuilder] {
 
-  def ellipse(v: ShapeAttrs): RhombusAttrsBuilder = jsOpt("ellipse", v)
+  def path(v: ShapeAttrs): RhombusAttrsBuilder = jsOpt("path", v)
 }
+
+object GenericRhombusAttrs extends GenericAttributesBuilder[RhombusAttrs](noOpts)

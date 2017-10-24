@@ -2,7 +2,7 @@ package joint.shapes.basic
 
 import joint.dia
 import joint.dia.TextAttrsSetters
-import joint.shapes.GenericAttributes
+import joint.shapes.{GenericAttributes, GenericAttributesBuilder}
 import org.querki.jsext.{JSOptionBuilder, OptMap, noOpts}
 
 import scala.scalajs.js
@@ -24,3 +24,5 @@ class CircleAttrsBuilder(val dict: OptMap)
 
   def circle(v: ShapeAttrs): CircleAttrsBuilder = jsOpt("circle", v)
 }
+
+object GenericCircleAttrs extends GenericAttributesBuilder[CircleAttrs](noOpts)

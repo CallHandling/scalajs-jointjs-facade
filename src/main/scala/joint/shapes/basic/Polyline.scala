@@ -2,7 +2,7 @@ package joint.shapes.basic
 
 import joint.dia
 import joint.dia.TextAttrsSetters
-import joint.shapes.GenericAttributes
+import joint.shapes.{GenericAttributes, GenericAttributesBuilder}
 import org.querki.jsext.{JSOptionBuilder, OptMap, noOpts}
 
 import scala.scalajs.js
@@ -22,5 +22,7 @@ class PolylineAttrsBuilder(val dict: OptMap)
   extends JSOptionBuilder[PolylineAttrs, PolylineAttrsBuilder](new PolylineAttrsBuilder(_))
     with TextAttrsSetters[PolylineAttrs, PolylineAttrsBuilder] {
 
-  def ellipse(v: ShapeAttrs): PolylineAttrsBuilder = jsOpt("ellipse", v)
+  def polyline(v: ShapeAttrs): PolylineAttrsBuilder = jsOpt("polyline", v)
 }
+
+object GenericPolylineAttrs extends GenericAttributesBuilder[PolylineAttrs](noOpts)

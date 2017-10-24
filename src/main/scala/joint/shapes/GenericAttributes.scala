@@ -1,6 +1,6 @@
 package joint.shapes
 
-import _root_.org.querki.jsext.{JSOptionBuilder, JSOptionSetter}
+import _root_.org.querki.jsext.{JSOptionBuilder, JSOptionSetter, OptMap}
 import joint.dia.{CellAttributes, Point, Size}
 
 import scala.scalajs.js
@@ -13,6 +13,10 @@ trait GenericAttributes[+T <: js.Object] extends CellAttributes {
   val `type`: js.UndefOr[String] = js.undefined
   val attrs: js.UndefOr[T] = js.undefined
 }
+
+class GenericAttributesBuilder[T <: js.Object](val dict: OptMap)
+  extends JSOptionBuilder[GenericAttributes[T], GenericAttributesBuilder[T]](new GenericAttributesBuilder[T](_)) with
+    GenericAttributesSetters[T, GenericAttributes[T], GenericAttributesBuilder[T]]
 
 trait GenericAttributesSetters[T1 <: js.Object, T <: js.Object, B <: JSOptionBuilder[T, _]] extends JSOptionSetter[T, B] {
   def position(v: Point): B = jsOpt("position", v)
