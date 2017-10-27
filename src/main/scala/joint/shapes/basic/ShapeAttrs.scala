@@ -28,6 +28,7 @@ trait ShapeAttrs extends CSSSelector {
   val `ref-x`: js.UndefOr[String | Double] = js.undefined
   val `ref-y`: js.UndefOr[String | Double] = js.undefined
   val ref: js.UndefOr[String] = js.undefined
+  val display: js.UndefOr[String] = js.undefined
 }
 
 object ShapeAttrs extends ShapeAttrsBuilder(noOpts) {
@@ -40,6 +41,8 @@ class ShapeAttrsBuilder(val dict: OptMap)
 
 trait ShapeAttrsSetters[T <: js.Object, B <: JSOptionBuilder[T, _]]
   extends JSOptionSetter[T, B] {
+
+  def display(v: String): B = jsOpt("display", v)
 
   def cursor(v: String): B = jsOpt("cursor", v)
 

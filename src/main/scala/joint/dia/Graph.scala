@@ -11,7 +11,7 @@ class Graph(attributes: js.UndefOr[js.Any] = js.undefined, options: js.UndefOr[j
 
   def fromJSON(json: Dynamic): Graph = js.native
 
-  def on(event: String, fun: js.Function1[CellView, Unit]): js.Any = js.native
+  def on(event: String, fun: js.Function1[GraphCells, Unit]): js.Any = js.native
 
   def addCell(cell: Cell | js.Array[Cell]): Graph = js.native
 
