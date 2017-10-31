@@ -12,6 +12,9 @@ trait ViewFinder[+T <: CellView] extends js.Object {
 @js.native
 @JSGlobal("joint.dia.Cell")
 class Cell(val attributes: CellAttributes) extends js.Object {
+
+  type  R <: Cell
+
   def id: String = js.native
 
   def get(key: String): js.Any = js.native
@@ -30,28 +33,28 @@ class Cell(val attributes: CellAttributes) extends js.Object {
 
   def prop(key: String): js.Any = js.native
 
-  def prop(`object`: js.Any): Cell = js.native
+  def prop(`object`: js.Any): R = js.native
 
   def prop(key: String, value: js.Any,
-           options: js.UndefOr[js.Any] = js.undefined): Cell = js.native
+           options: js.UndefOr[js.Any] = js.undefined): R = js.native
 
   def removeProp(path: String,
-                 options: js.UndefOr[js.Any] = js.undefined): Cell = js.native
+                 options: js.UndefOr[js.Any] = js.undefined): R = js.native
 
   def attr(key: String): js.Any = js.native
 
-  def attr(`object`: SVGAttributes): Cell = js.native
+  def attr(`object`: SVGAttributes): R = js.native
 
-  def attr(key: String, value: js.Any): Cell = js.native
-
-  @JSName("clone")
-  def copy(): Cell = js.native
+  def attr(key: String, value: js.Any): R = js.native
 
   @JSName("clone")
-  def clone(opt: Deep): Cell | js.Array[Cell] = js.native
+  def copy(): R = js.native
+
+  @JSName("clone")
+  def clone(opt: Deep): R | js.Array[R] = js.native
 
   def removeAttr(path: String | js.Array[String],
-                 options: js.UndefOr[js.Any] = js.undefined): Cell = js.native
+                 options: js.UndefOr[js.Any] = js.undefined): R = js.native
 
   def transition(path: String, value: js.UndefOr[js.Any] = js.undefined,
                  options: js.UndefOr[TransitionOptions] = js.undefined,
@@ -60,16 +63,16 @@ class Cell(val attributes: CellAttributes) extends js.Object {
   def getTransitions(): js.Array[String] = js.native
 
   def stopTransitions(path: String,
-                      delim: js.UndefOr[String] = js.undefined): Cell = js.native
+                      delim: js.UndefOr[String] = js.undefined): R = js.native
 
   def addTo(graph: Graph,
-            options: js.UndefOr[js.Any] = js.undefined): Cell = js.native
+            options: js.UndefOr[js.Any] = js.undefined): R = js.native
 
   def isLink(): Boolean = js.native
 
-  def embed(cell: Cell, options: js.UndefOr[js.Any] = js.undefined): Cell = js.native
+  def embed(cell: Cell, options: js.UndefOr[js.Any] = js.undefined): R = js.native
 
-  def getEmbeddedCells(options: js.UndefOr[ExploreOptions] = js.undefined): js.Array[Cell] = js.native
+  def getEmbeddedCells(options: js.UndefOr[ExploreOptions] = js.undefined): js.Array[R] = js.native
 
   def initialize(options: js.UndefOr[js.Any] = js.undefined): Unit = js.native
 
@@ -79,9 +82,9 @@ class Cell(val attributes: CellAttributes) extends js.Object {
 
   def processPorts(): Unit = js.native
 
-  def startBatch(name: String, options: js.UndefOr[js.Any] = js.undefined): Cell = js.native
+  def startBatch(name: String, options: js.UndefOr[js.Any] = js.undefined): R = js.native
 
-  def stopBatch(name: String, options: js.UndefOr[js.Any]): Cell = js.native
+  def stopBatch(name: String, options: js.UndefOr[js.Any]): R = js.native
 
-  def unembed(cell: Cell, options: js.UndefOr[js.Any] = js.undefined): Cell = js.native
+  def unembed(cell: Cell, options: js.UndefOr[js.Any] = js.undefined): R = js.native
 }

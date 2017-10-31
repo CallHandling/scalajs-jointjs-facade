@@ -1,5 +1,6 @@
 package joint.shapes.devs
 
+import jdk.nashorn.internal.ir.BaseNode
 import joint.shapes.basic._
 
 import scala.scalajs.js
@@ -8,6 +9,7 @@ import scala.scalajs.js.annotation.JSGlobal
 @js.native
 @JSGlobal("joint.shapes.devs.Model")
 class Model(override val attributes: ModelAttributes) extends Generic(attributes) {
+  override type R <: Model
 
   def changeInGroup(properties: js.Any, opt: js.UndefOr[js.Any] = js.undefined): Boolean = js.native
 
@@ -23,8 +25,11 @@ class Model(override val attributes: ModelAttributes) extends Generic(attributes
 
   def removeInPort(port: String, opt: js.UndefOr[js.Any] = js.undefined): Model = js.native
 
+  def updatePortItems(model: Model, changed: js.Any, opt: js.Any): Model = js.native
+
   val markup: String = js.native
 }
+
 
 object Model {
   def apply(attributes: ModelAttributes): Model = js.Dynamic.newInstance(js.Dynamic.global.joint.shapes.devs.Model)(attributes).asInstanceOf[Model]
