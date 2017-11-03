@@ -1,6 +1,5 @@
 package joint.shapes.devs
 
-import jdk.nashorn.internal.ir.BaseNode
 import joint.shapes.basic._
 
 import scala.scalajs.js
@@ -29,7 +28,6 @@ class Model(override val attributes: ModelAttributes) extends Generic(attributes
 
   val markup: String = js.native
 }
-
 
 object Model {
   def apply(attributes: ModelAttributes): Model = js.Dynamic.newInstance(js.Dynamic.global.joint.shapes.devs.Model)(attributes).asInstanceOf[Model]

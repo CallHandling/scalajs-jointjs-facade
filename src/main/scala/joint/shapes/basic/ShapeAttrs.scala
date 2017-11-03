@@ -58,6 +58,8 @@ trait ShapeAttrsSetters[T <: js.Object, B <: JSOptionBuilder[T, _]]
 
   def text(v: String): B = jsOpt("text", v)
 
+  def text(v: ShapeAttrs): B = jsOpt("text", v)
+
   /**
     * set will set SVG attributes to the given selector/tag
     *

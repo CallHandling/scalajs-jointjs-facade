@@ -49,7 +49,7 @@ class Element(override val attributes: CellAttributes) extends Cell(attributes) 
 
   def hasPort(id: String): Boolean = js.native
 
-  def getPorts(): js.Array[js.Any] = js.native
+  def getPorts(): js.Array[PortItem] = js.native
 
   def getPort(id: String): js.Any = js.native
 
