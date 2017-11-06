@@ -7,11 +7,11 @@ import scala.scalajs.js
 
 trait PortOptions extends js.Object {
   val groups: js.UndefOr[GroupOptions] = js.undefined
-  val items: js.UndefOr[js.Array[PortItem]] = js.undefined
+  val items: js.UndefOr[js.Array[_ <: PortItem]] = js.undefined
 }
 
 object PortOptions {
-  def apply(groups: js.UndefOr[GroupOptions] = js.undefined): PortOptions = {
+  def apply[T <: PortItem](groups: js.UndefOr[GroupOptions] = js.undefined): PortOptions = {
     val result = js.Dynamic.literal()
     groups.foreach(result.groups = _)
     result.asInstanceOf[PortOptions]

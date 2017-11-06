@@ -8,6 +8,7 @@ import scala.scalajs.js.annotation.JSGlobal
 class Element(override val attributes: CellAttributes) extends Cell(attributes) {
   override type R <: Element
 
+
   def translate(x: Int, y: Int): js.native = js.native
 
   def getAttribute(name: String): String = js.native
@@ -39,17 +40,17 @@ class Element(override val attributes: CellAttributes) extends Cell(attributes) 
   def scale(scaleX: Int, scaleY: Int, origin: js.UndefOr[Point] = js.undefined,
             options: js.UndefOr[js.Any] = js.undefined): R = js.native
 
-  def addPort(port: js.Any, opt: js.UndefOr[js.Any] = js.undefined): R = js.native
+  def addPort(port: PortItem, opt: js.UndefOr[js.Any] = js.undefined): R = js.native
 
-  def addPorts(ports: js.Array[js.Any], opt: js.UndefOr[js.Any] = js.undefined): R = js.native
+  def addPorts(ports: js.Array[_ <: PortItem], opt: js.UndefOr[js.Any] = js.undefined): R = js.native
 
-  def removePort(port: js.Any, opt: js.UndefOr[js.Any]): R = js.native
+  def removePort(port: PortItem, opt: js.UndefOr[js.Any]): R = js.native
 
   def hasPorts(): Boolean = js.native
 
   def hasPort(id: String): Boolean = js.native
 
-  def getPorts(): js.Array[PortItem] = js.native
+  def getPorts(): js.Array[_ <: PortItem] = js.native
 
   def getPort(id: String): js.Any = js.native
 

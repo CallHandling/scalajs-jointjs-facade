@@ -16,7 +16,7 @@ object ModelAttributes extends ModelAttributesBuilder(noOpts)
 
 class ModelAttributesBuilder(val dict: OptMap)
   extends JSOptionBuilder[ModelAttributes, ModelAttributesBuilder](new ModelAttributesBuilder(_))
-  with ModelAttributesSetters[ModelAttributes, ModelAttributesBuilder]
+    with ModelAttributesSetters[ModelAttributes, ModelAttributesBuilder]
 
 trait ModelAttributesSetters[T <: js.Object, B <: JSOptionBuilder[T, _]]
   extends JSOptionSetter[T, B]
