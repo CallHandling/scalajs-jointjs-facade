@@ -11,7 +11,7 @@ trait ShapeAttrs extends CSSSelector {
   val `ref-dx`: js.UndefOr[Int | Double] = js.undefined
   val `ref-dy`: js.UndefOr[Int | Double] = js.undefined
   val d: js.UndefOr[String] = js.undefined
-  val text: js.UndefOr[String] = js.undefined
+  val text: js.UndefOr[String | ShapeAttrs] = js.undefined
   val fill: js.UndefOr[String] = js.undefined
   val magnet: js.UndefOr[String] = js.undefined
   val stroke: js.UndefOr[String] = js.undefined
